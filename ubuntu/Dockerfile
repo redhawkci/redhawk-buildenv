@@ -41,6 +41,5 @@ ONBUILD RUN apt-get update -qq && \
 
 ONBUILD COPY . /build
 ONBUILD WORKDIR /build
-ONBUILD VOLUME /build
 
 CMD ["/bin/bash", "-l"]
