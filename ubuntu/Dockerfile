@@ -9,6 +9,7 @@ RUN apt-get update -qq && \
                        build-essential \
                        libboost-dev \
                        libboost-filesystem-dev \
+                       libboost-iostreams-dev \
                        libboost-regex-dev \
                        libboost-system-dev \
                        libboost-thread-dev \
