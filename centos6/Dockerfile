@@ -4,7 +4,8 @@ COPY redhawk-deps.repo /etc/yum.repos.d/
 
 RUN yum clean all && \
     yum install -y epel-release && \
-    yum install -y autoconf \
+    yum install -y @buildsys-build \
+                   autoconf \
                    automake \
                    boost-devel \
                    expat-devel \
