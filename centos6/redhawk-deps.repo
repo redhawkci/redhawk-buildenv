@@ -1,0 +1,5 @@
+[redhawk-deps]
+name=REDHAWK
+baseurl=http://yum.axiosengineering.com/redhawk/1.10.2/el6/x86_64/
+enabled=1
+gpgcheck=0
