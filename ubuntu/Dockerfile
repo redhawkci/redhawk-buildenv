@@ -3,10 +3,12 @@ FROM ubuntu:14.04
 RUN apt-get update -qq && \
     apt-get install -y software-properties-common && \
     add-apt-repository ppa:redhawksdr/omnievents-2.7 && \
+    apt-get update -qq && \
     apt-get install -y autoconf \
                        automake \
                        autotools-dev \
                        build-essential \
+                       git \
                        libboost-dev \
                        libboost-filesystem-dev \
                        libboost-iostreams-dev \
@@ -40,7 +42,7 @@ ONBUILD RUN apt-get update -qq && \
             apt-get clean && \
             rm -rf /var/lib/apt/lists/*
 
-ONBUILD COPY . /build
-ONBUILD WORKDIR /build
+#ONBUILD COPY . /build
+#ONBUILD WORKDIR /build
 
 CMD ["/bin/bash", "-l"]
