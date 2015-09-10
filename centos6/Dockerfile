@@ -9,6 +9,7 @@ RUN yum clean all && \
                    automake \
                    boost-devel \
                    expat-devel \
+                   git \
                    java7-devel \
                    libomniEvents2-devel \
                    libtool \
