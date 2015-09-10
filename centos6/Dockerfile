@@ -22,7 +22,7 @@ RUN yum clean all && \
 
 RUN rm -rf /etc/yum.repos.d/redhawk-deps.repo
 
-ONBUILD COPY . /build
-ONBUILD WORKDIR /build
+#ONBUILD COPY . /build
+#ONBUILD WORKDIR /build
 
 CMD ["/bin/bash", "-l"]
