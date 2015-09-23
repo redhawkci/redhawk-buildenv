@@ -31,7 +31,7 @@ RUN rm -rf /etc/yum.repos.d/redhawk-deps.repo
 
 RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python && \
     pip install xmlrunner \
-                numpy \
+                'numpy<1.9.0' \
                 scipy
 
 RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-2.5.3.tar.gz | tar xzf - -C /usr/src && \
