@@ -8,22 +8,36 @@ RUN yum clean all && \
                    autoconf \
                    automake \
                    boost-devel \
+                   curl-devel \
                    expat-devel \
-                   git \
+                   gettext-devel \
                    java7-devel \
+                   lapack-devel \
                    libomniEvents2-devel \
                    libtool \
                    libuuid-devel \
                    log4cxx-devel \
                    omniORB-devel \
                    omniORBpy-devel \
+                   openssl-devel \
+                   perl-devel \
+                   perl-ExtUtils \
                    python-devel \
-                   xsd && \
+                   xsd \
+                   zlib-devel && \
     yum clean all
 
 RUN rm -rf /etc/yum.repos.d/redhawk-deps.repo
 
-#ONBUILD COPY . /build
-#ONBUILD WORKDIR /build
+RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python && \
+    pip install xmlrunner \
+                numpy \
+                scipy
+
+RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-2.5.3.tar.gz | tar xzf - -C /usr/src && \
+    cd /usr/src/git-2.5.3 && \
+    make prefix=/usr/local all && \
+    make prefix=/usr/local install && \
+    rm -rf /usr/src/git-2.5.3
 
 CMD ["/bin/bash", "-l"]

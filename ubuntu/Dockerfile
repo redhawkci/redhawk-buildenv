@@ -9,6 +9,7 @@ RUN apt-get update -qq && \
                        autotools-dev \
                        build-essential \
                        git \
+                       gfortran \
                        libboost-dev \
                        libboost-filesystem-dev \
                        libboost-iostreams-dev \
@@ -16,9 +17,11 @@ RUN apt-get update -qq && \
                        libboost-system-dev \
                        libboost-thread-dev \
                        libcos4-dev \
+                       liblapack-dev \
                        liblog4cxx10-dev \
                        libomnievents-dev \
                        libomniorb4-dev \
+                       libopenblas-dev \
                        libtool \
                        libxml2-utils \
                        omnievents \
@@ -30,10 +33,15 @@ RUN apt-get update -qq && \
                        python2.7-dev \
                        python-omniorb \
                        python-numpy \
+                       python-pip \
                        uuid-dev \
+                       uuid-runtime \
                        xsdcxx && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+RUN pip install xmlrunner \
+                scipy
 
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 
@@ -41,8 +49,5 @@ ONBUILD RUN apt-get update -qq && \
             apt-get upgrade -y && \
             apt-get clean && \
             rm -rf /var/lib/apt/lists/*
-
-#ONBUILD COPY . /build
-#ONBUILD WORKDIR /build
 
 CMD ["/bin/bash", "-l"]
