@@ -40,7 +40,8 @@ RUN apt-get update -qq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install scipy \
+RUN pip install nose \
+                scipy \
                 unittest-xml-reporting
 
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
