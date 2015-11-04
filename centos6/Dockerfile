@@ -18,6 +18,7 @@ RUN yum clean all && \
                    libuuid-devel \
                    log4cxx-devel \
                    omniORB-devel \
+                   omniORB-utils \
                    omniORBpy-devel \
                    openssl-devel \
                    perl-devel \
@@ -30,7 +31,8 @@ RUN yum clean all && \
 RUN rm -rf /etc/yum.repos.d/redhawk-deps.repo
 
 RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python && \
-    pip install 'numpy<1.9.0' \
+    pip install nose \
+                'numpy<1.9.0' \
                 scipy \
                 unittest-xml-reporting
 
