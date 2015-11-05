@@ -8,10 +8,12 @@ RUN yum clean all && \
                    autoconf \
                    automake \
                    boost-devel \
+                   cppunit-devel
                    curl-devel \
                    expat-devel \
                    gettext-devel \
                    java7-devel \
+                   junit \
                    lapack-devel \
                    libomniEvents2-devel \
                    libtool \
