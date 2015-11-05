@@ -10,12 +10,14 @@ RUN apt-get update -qq && \
                        build-essential \
                        git \
                        gfortran \
+                       junit \
                        libboost-dev \
                        libboost-filesystem-dev \
                        libboost-iostreams-dev \
                        libboost-regex-dev \
                        libboost-system-dev \
                        libboost-thread-dev \
+                       libcppunit-dev \
                        libcos4-dev \
                        liblapack-dev \
                        liblog4cxx10-dev \
