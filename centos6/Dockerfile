@@ -8,7 +8,7 @@ RUN yum clean all && \
                    autoconf \
                    automake \
                    boost-devel \
-                   cppunit-devel
+                   cppunit-devel \
                    curl-devel \
                    expat-devel \
                    gettext-devel \
