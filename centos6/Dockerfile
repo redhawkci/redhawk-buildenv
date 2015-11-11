@@ -2,9 +2,12 @@ FROM centos:6
 
 COPY redhawk-deps.repo /etc/yum.repos.d/
 
-RUN yum clean all && \
-    yum update -y && \
+RUN yum update -y && \
     yum install -y epel-release && \
+    yum install -y yum-utils && \
+    yum-config-manager --enable epel-testing && \
+    yum install -y xsd && \
+    yum-config-manager --disable epel-testing && \
     yum install -y @buildsys-build \
                    autoconf \
                    automake \
@@ -39,8 +42,10 @@ RUN yum-config-manager --enable epel-testing
 RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python && \
     pip install nose \
                 'numpy<1.9.0' \
-                scipy \
+                #scipy \
                 unittest-xml-reporting
+
+RUN pip install scipy
 
 RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-2.5.3.tar.gz | tar xzf - -C /usr/src && \
     cd /usr/src/git-2.5.3 && \
