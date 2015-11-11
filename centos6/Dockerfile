@@ -3,6 +3,7 @@ FROM centos:6
 COPY redhawk-deps.repo /etc/yum.repos.d/
 
 RUN yum clean all && \
+    yum update -y && \
     yum install -y epel-release && \
     yum install -y @buildsys-build \
                    autoconf \
@@ -27,10 +28,13 @@ RUN yum clean all && \
                    perl-ExtUtils \
                    python-devel \
                    xsd \
+                   yum-utils \
                    zlib-devel && \
     yum clean all
 
 RUN rm -rf /etc/yum.repos.d/redhawk-deps.repo
+
+RUN yum-config-manager --enable epel-testing
 
 RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python && \
     pip install nose \
