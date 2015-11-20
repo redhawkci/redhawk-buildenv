@@ -18,7 +18,7 @@ RUN yum update -y && \
                    expat-devel \
                    gettext-devel \
                    java7-devel \
-                   junit \
+                   junit4 \
                    lapack-devel \
                    libomniEvents2-devel \
                    libtool \
