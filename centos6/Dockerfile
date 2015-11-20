@@ -9,6 +9,7 @@ RUN yum update -y && \
     yum install -y xsd && \
     yum-config-manager --disable epel-testing && \
     yum install -y @buildsys-build \
+                   ant-junit \
                    autoconf \
                    automake \
                    boost-devel \
@@ -23,6 +24,7 @@ RUN yum update -y && \
                    libtool \
                    libuuid-devel \
                    log4cxx-devel \
+                   octave-devel \
                    omniORB-devel \
                    omniORB-utils \
                    omniORBpy-devel \
@@ -37,15 +39,12 @@ RUN yum update -y && \
 
 RUN rm -rf /etc/yum.repos.d/redhawk-deps.repo
 
-RUN yum-config-manager --enable epel-testing
-
 RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python && \
-    pip install nose \
+    pip install jinja2 \
+                nose \
                 'numpy<1.9.0' \
-                #scipy \
+                scipy \
                 unittest-xml-reporting
-
-RUN pip install scipy
 
 RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-2.5.3.tar.gz | tar xzf - -C /usr/src && \
     cd /usr/src/git-2.5.3 && \

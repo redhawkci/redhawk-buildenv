@@ -4,7 +4,8 @@ RUN apt-get update -qq && \
     apt-get install -y software-properties-common && \
     add-apt-repository ppa:redhawksdr/omnievents-2.7 && \
     apt-get update -qq && \
-    apt-get install -y autoconf \
+    apt-get install -y ant \
+                       autoconf \
                        automake \
                        autotools-dev \
                        build-essential \
@@ -21,6 +22,7 @@ RUN apt-get update -qq && \
                        libcos4-dev \
                        liblapack-dev \
                        liblog4cxx10-dev \
+                       liboctave-dev \
                        libomnievents-dev \
                        libomniorb4-dev \
                        libopenblas-dev \
@@ -42,7 +44,8 @@ RUN apt-get update -qq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install nose \
+RUN pip install jinja2 \
+                nose \
                 scipy \
                 unittest-xml-reporting
 
