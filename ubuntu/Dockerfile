@@ -11,7 +11,7 @@ RUN apt-get update -qq && \
                        build-essential \
                        git \
                        gfortran \
-                       junit \
+                       junit4 \
                        libboost-dev \
                        libboost-filesystem-dev \
                        libboost-iostreams-dev \
