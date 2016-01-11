@@ -4,10 +4,6 @@ COPY redhawk-deps.repo /etc/yum.repos.d/
 
 RUN yum update -y && \
     yum install -y epel-release && \
-    yum install -y yum-utils && \
-    yum-config-manager --enable epel-testing && \
-    yum install -y xsd && \
-    yum-config-manager --disable epel-testing && \
     yum install -y @buildsys-build \
                    ant-junit \
                    autoconf \
@@ -30,7 +26,7 @@ RUN yum update -y && \
                    omniORBpy-devel \
                    openssl-devel \
                    perl-devel \
-                   perl-ExtUtils \
+                   perl-ExtUtils-MakeMaker \
                    python-devel \
                    xsd \
                    yum-utils \
@@ -46,10 +42,10 @@ RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | 
                 scipy \
                 unittest-xml-reporting
 
-RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-2.5.3.tar.gz | tar xzf - -C /usr/src && \
-    cd /usr/src/git-2.5.3 && \
+RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz | tar xzf - -C /usr/src && \
+    cd /usr/src/git-2.7.0 && \
     make prefix=/usr/local all && \
     make prefix=/usr/local install && \
-    rm -rf /usr/src/git-2.5.3
+    rm -rf /usr/src/git-2.7.0
 
 CMD ["/bin/bash", "-l"]

@@ -3,6 +3,7 @@ FROM ubuntu:14.04
 RUN apt-get update -qq && \
     apt-get install -y software-properties-common && \
     add-apt-repository ppa:redhawksdr/omnievents-2.7 && \
+    add-apt-repository ppa:git-core/ppa && \
     apt-get update -qq && \
     apt-get install -y ant \
                        autoconf \
