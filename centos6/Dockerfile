@@ -2,7 +2,8 @@ FROM centos:6
 
 COPY redhawk-deps.repo /etc/yum.repos.d/
 
-RUN yum update -y && \
+RUN touch /var/lib/rpm/* && \
+    yum update -y && \
     yum install -y epel-release && \
     yum install -y @buildsys-build \
                    ant-junit \
@@ -47,5 +48,7 @@ RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz | ta
     make prefix=/usr/local all && \
     make prefix=/usr/local install && \
     rm -rf /usr/src/git-2.7.0
+
+COPY omniORB.cfg /etc/
 
 CMD ["/bin/bash", "-l"]
