@@ -41,6 +41,7 @@ RUN apt-get update -qq && \
                        python-pip \
                        uuid-dev \
                        uuid-runtime \
+                       valgrind \
                        xsdcxx && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
