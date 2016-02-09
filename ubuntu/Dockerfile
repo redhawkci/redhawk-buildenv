@@ -55,9 +55,4 @@ ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 
 COPY omniORB.cfg /etc/
 
-ONBUILD RUN apt-get update -qq && \
-            apt-get upgrade -y && \
-            apt-get clean && \
-            rm -rf /var/lib/apt/lists/*
-
 CMD ["/bin/bash", "-l"]
