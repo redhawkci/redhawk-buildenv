@@ -29,6 +29,7 @@ RUN touch /var/lib/rpm/* && \
                    perl-devel \
                    perl-ExtUtils-MakeMaker \
                    python-devel \
+                   valgrind \
                    xsd \
                    yum-utils \
                    zlib-devel && \
