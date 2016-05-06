@@ -10,7 +10,6 @@ RUN apt-get update -qq && \
                        automake \
                        autotools-dev \
                        build-essential \
-                       git \
                        gfortran \
                        junit4 \
                        libboost-dev \
@@ -27,6 +26,7 @@ RUN apt-get update -qq && \
                        libomnievents-dev \
                        libomniorb4-dev \
                        libopenblas-dev \
+                       libnuma-dev \
                        libtool \
                        libxml2-utils \
                        omnievents \
@@ -52,6 +52,13 @@ RUN pip install jinja2 \
                 unittest-xml-reporting
 
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+
+ENV GIT_VERSION=2.8.2
+RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-$GIT_VERSION.tar.gz | tar xzf - -C /usr/src && \
+    cd /usr/src/git-$GIT_VERSION && \
+    make prefix=/usr/local all && \
+    make prefix=/usr/local install && \
+    rm -rf /usr/src/git-$GIT_VERSION
 
 COPY omniORB.cfg /etc/
 

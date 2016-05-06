@@ -2,8 +2,7 @@ FROM centos:6
 
 COPY redhawk-deps.repo /etc/yum.repos.d/
 
-RUN touch /var/lib/rpm/* && \
-    yum update -y && \
+RUN yum update -y && \
     yum install -y epel-release && \
     yum install -y @buildsys-build \
                    ant-junit \
@@ -26,6 +25,7 @@ RUN touch /var/lib/rpm/* && \
                    omniORB-utils \
                    omniORBpy-devel \
                    openssl-devel \
+                   numactl-devel \
                    perl-devel \
                    perl-ExtUtils-MakeMaker \
                    python-devel \
@@ -44,11 +44,12 @@ RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | 
                 scipy \
                 unittest-xml-reporting
 
-RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz | tar xzf - -C /usr/src && \
-    cd /usr/src/git-2.7.0 && \
+ENV GIT_VERSION=2.8.2
+RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-$GIT_VERSION.tar.gz | tar xzf - -C /usr/src && \
+    cd /usr/src/git-$GIT_VERSION && \
     make prefix=/usr/local all && \
     make prefix=/usr/local install && \
-    rm -rf /usr/src/git-2.7.0
+    rm -rf /usr/src/git-$GIT_VERSION
 
 COPY omniORB.cfg /etc/
 
