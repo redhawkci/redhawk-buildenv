@@ -10,6 +10,8 @@ RUN apt-get update -qq && \
                        automake \
                        autotools-dev \
                        build-essential \
+                       curl \
+                       gettext \
                        gfortran \
                        junit4 \
                        libboost-dev \
@@ -20,6 +22,7 @@ RUN apt-get update -qq && \
                        libboost-thread-dev \
                        libcppunit-dev \
                        libcos4-dev \
+                       libcurl4-openssl-dev \
                        liblapack-dev \
                        liblog4cxx10-dev \
                        liboctave-dev \
