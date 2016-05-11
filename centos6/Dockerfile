@@ -42,7 +42,7 @@ RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | 
                 nose \
                 'numpy<1.9.0' \
                 scipy \
-                unittest-xml-reporting
+                'unittest-xml-reporting==1.14.0'
 
 ENV GIT_VERSION=2.8.2
 RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-$GIT_VERSION.tar.gz | tar xzf - -C /usr/src && \
