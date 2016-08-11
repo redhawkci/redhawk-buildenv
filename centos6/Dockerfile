@@ -29,11 +29,14 @@ RUN yum update -y && \
                    perl-devel \
                    perl-ExtUtils-MakeMaker \
                    python-devel \
+                   rpmdevtools \
                    valgrind \
                    xsd \
                    yum-utils \
                    zlib-devel && \
     yum clean all
+    
+RUN rpmdev-setuptree
 
 RUN rm -rf /etc/yum.repos.d/redhawk-deps.repo
 
