@@ -10,6 +10,7 @@ RUN yum update -y && \
                    automake \
                    boost-devel \
                    cppunit-devel \
+                   createrepo \
                    curl-devel \
                    expat-devel \
                    gettext-devel \
@@ -47,7 +48,7 @@ RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | 
                 scipy \
                 'unittest-xml-reporting==1.14.0'
 
-ENV GIT_VERSION=2.8.2
+ENV GIT_VERSION=2.9.2
 RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-$GIT_VERSION.tar.gz | tar xzf - -C /usr/src && \
     cd /usr/src/git-$GIT_VERSION && \
     make prefix=/usr/local all && \
