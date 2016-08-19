@@ -45,10 +45,10 @@ RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | 
     pip install jinja2 \
                 nose \
                 'numpy<1.9.0' \
-                scipy \
+                'scipy==0.17.1' \
                 'unittest-xml-reporting==1.14.0'
 
-ENV GIT_VERSION=2.9.2
+ENV GIT_VERSION=2.9.3
 RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-$GIT_VERSION.tar.gz | tar xzf - -C /usr/src && \
     cd /usr/src/git-$GIT_VERSION && \
     make prefix=/usr/local all && \
