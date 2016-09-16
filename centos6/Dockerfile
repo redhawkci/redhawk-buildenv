@@ -14,7 +14,7 @@ RUN yum update -y && \
                    curl-devel \
                    expat-devel \
                    gettext-devel \
-                   java7-devel \
+                   java-1.8.0-openjdk-devel \
                    junit4 \
                    lapack-devel \
                    libomniEvents2-devel \
@@ -48,7 +48,7 @@ RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | 
                 'scipy==0.17.1' \
                 'unittest-xml-reporting==1.14.0'
 
-ENV GIT_VERSION=2.9.3
+ENV GIT_VERSION=2.10.0
 RUN curl -fsSL https://www.kernel.org/pub/software/scm/git/git-$GIT_VERSION.tar.gz | tar xzf - -C /usr/src && \
     cd /usr/src/git-$GIT_VERSION && \
     make prefix=/usr/local all && \
